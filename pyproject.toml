@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "contacts-assessment"
+version = "0.1.0"
+description = ""
+authors = ["Dominic Chaple <d0mch4pl3@gmail.com>"]
+readme = "README.md"
+packages = [{include = "contacts_assessment"}]
+
+[tool.poetry.dependencies]
+python = "^3.12"
+django = "5"
+loguru = "^0.7.3"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
