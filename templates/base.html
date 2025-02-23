@@ -1,22 +1,32 @@
+{% load static %}
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Contacts{% endblock %}</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
+    <!-- Tailwind -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/atyles.css' %}">
 </head>
-<body>
-    <header>
-        <h1>Contacts</h1>
+<body class="flex flex-col min-h-screen">
+    <header class="bg-gray-100 p-6 shadow-md">
+        <h1 class="text-4xl font-bold text-center text-gray-800 font-poppins">
+            Contacts
+        </h1>
     </header>
 
-    <main>
+    <main class="flex-grow">
+        {% include 'messages/index.html' %}
         {% block content %}
         {% endblock %}
     </main>
 
-    <footer>
-        <p>&copy; 2025 Contacts</p>
+    <footer class="bg-gray-800 text-white py-4">
+        <div class="container mx-auto flex justify-end">
+            <p class="text-sm">Contacts &copy; 2025</p>
+        </div>
     </footer>
 </body>
 </html>

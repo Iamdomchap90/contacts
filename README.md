@@ -6,5 +6,5 @@ This project uses poetry to manage dependencies. To set up the environment use t
 
     poetry shell
     export DJANGO_SETTINGS_MODULE=core.settings
-    export PYTHONPATH=$(pwd)
+    export PYTHONPATH=$(pwd)/src
 
