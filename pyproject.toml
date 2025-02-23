@@ -4,13 +4,25 @@ version = "0.1.0"
 description = ""
 authors = ["Dominic Chaple <d0mch4pl3@gmail.com>"]
 readme = "README.md"
-packages = [{include = "contacts_assessment"}]
+packages = [{include = "contacts.src"}]
 
 [tool.poetry.dependencies]
 python = "^3.12"
 django = "5"
 loguru = "^0.7.3"
 
+[tool.poetry.group.dev.dependencies]
+pandas = "^2.2.3"
+wheel = "^0.45.1"
+coverage = "^7.6.12"
+black = "^25.1.0"
+flake8 = "^7.1.2"
+isort = "^6.0.0"
+
+[tool.black]
+line-length = 79
+target-version = ['py39']
+include = '\.pyi?$'
 
 [build-system]
 requires = ["poetry-core"]

@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <section>
+        <div <div class="p-4 bg-gray-50">
+    <h2 class="text-2xl font-semibold text-gray-800 inline border-b-2 border-gray-400 pb-1">Contacts List</h2>
+        </div>
+        <div class="list_container">
+            {% if contacts %}
+                <table class="min-w-full border-collapse">
+                    <thead>
+                        <tr class="bg-gray-200">
+                            <th class="px-4 py-2 text-left">Name</th>
+                            <th class="px-4 py-2 text-left hidden lg:table-cell">Address</th>
+                            <th class="px-4 py-2 text-left hidden lg:table-cell">Email</th>
+                            <th class="px-4 py-2 text-left hidden lg:table-cell">Phone Number</th>
+                            <th class="px-4 py-2 text-left hidden lg:table-cell">Company</th>
+                            <th class="px-4 py-2 text-left hidden lg:table-cell">Updated/Created At</th>
+                            <th class="px-4 py-2 text-left">Edit</th>
+                            <th class="px-4 py-2 text-left">Delete</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+            {% endif %}
+            {% for contact in contacts %}
+                <tr class="border-b">
+                    <td class="px-4 py-2">
+                        {{ contact.first_name }} {{ contact.last_name }}
+                    </td>
+                    <td class="px-4 py-2 hidden lg:table-cell">{{ contact.truncated_address }}</td>
+                    <td class="px-4 py-2 hidden lg:table-cell">{{ contact.email }}</td>
+                    <td class="px-4 py-2 hidden lg:table-cell">{{ contact.phone_number }}</td>
+                    <td class="px-4 py-2 hidden lg:table-cell">{{ contact.company }}</td>
+                    <td class="px-4 py-2 hidden lg:table-cell">{{ contact.updated_at|date:"Y-m-d H:i:s" }}</td>
+                    <td class="px-4 py-2">
+                        <a href="{% url 'contacts:update' contact.id %}" class="text-blue-500 hover:text-blue-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15.232 5.232a3 3 0 00-4.242 0L5 12.586V18h5.414l6.99-6.99a3 3 0 000-4.242z" />
+                            </svg>
+                        </a>
+                    </td>
+                    <td class="px-4 py-2">
+                        <a href="#" class="text-red-500 hover:text-red-700">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </a>
+                    </td>
+                </tr>
+            {% empty %}
+                <p>No contacts have been added yet.</p>
+            {% endfor %}
+            {% if contacts %}
+                    </tbody>
+                </table>
+            {% endif %}
+        </div>
+    </section>
+{% endblock %}
