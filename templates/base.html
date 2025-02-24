@@ -5,10 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>{% block title %}Contacts{% endblock %}</title>
+    <script src="https://unpkg.com/htmx.org@1.9.3"></script>
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
     <!-- Tailwind -->
     <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="{% static 'css/atyles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
 </head>
 <body class="flex flex-col min-h-screen">
     <header class="bg-gray-100 p-6 shadow-md">
@@ -18,8 +19,13 @@
     </header>
 
     <main class="flex-grow">
-        {% include 'messages/index.html' %}
+
         {% block content %}
+        {% endblock %}
+
+        {% include 'messages/index.html' %}
+
+        {% block js %}
         {% endblock %}
     </main>
 
