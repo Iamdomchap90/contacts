@@ -1,13 +1,15 @@
-from contacts.forms import ContactForm
 from django.contrib import messages
 from django.http import HttpResponseRedirect
 from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView
+from django.views.generic import CreateView, ListView
 from django.views.generic.edit import FormView
 from loguru import logger
+from rest_framework import viewsets
 
+from contacts.forms import ContactForm
 from contacts.models import Contact
+from contacts.serializers import ContactSerializer
 
 
 class ContactListView(ListView):
@@ -93,3 +95,8 @@ def delete_contact(request, pk):
         )
 
     return HTTPResponseHXRedirect(redirect_to=reverse_lazy("contacts:list"))
+
+
+class ContactViewSet(viewsets.ModelViewSet):
+    queryset = Contact.objects.all()
+    serializer_class = ContactSerializer
