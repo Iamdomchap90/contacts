@@ -94,25 +94,23 @@
 
             deleteButtons.forEach(button => {
                 button.addEventListener('click', function (event) {
-                    event.preventDefault(); // Prevent the default link behavior
-                    const contactId = this.getAttribute('data-contact-id'); // Get the contact ID
-                    const modal = document.getElementById(`modal-${contactId}`); // Get the corresponding modal
+                    event.preventDefault();
+                    const contactId = this.getAttribute('data-contact-id');
+                    const modal = document.getElementById(`modal-${contactId}`);
 
-                    // Toggle the display of the modal
                     if (modal.classList.contains('hidden')) {
-                    modal.classList.remove('hidden'); // Show the modal
+                    modal.classList.remove('hidden');
                 } else {
-                    modal.classList.add('hidden'); // Hide the modal
+                    modal.classList.add('hidden');
                 }
             });
         });
 
-            // Optional: Add a click event to close the modal when clicking outside of it
             const modalContainers = document.querySelectorAll('.modal-container');
             modalContainers.forEach(container => {
             container.addEventListener('click', function (event) {
             if (event.target === container) {
-            container.classList.add('hidden'); // Hide the modal if clicking outside of it
+            container.classList.add('hidden');
         }
         });
         });

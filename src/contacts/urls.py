@@ -1,5 +1,10 @@
 from django.urls import path
-from contacts.views import ContactFormView, ContactListView, ContactUpdateView, delete_contact
+from contacts.views import (
+    ContactFormView,
+    ContactListView,
+    ContactUpdateView,
+    delete_contact,
+)
 
 
 app_name = "contacts"

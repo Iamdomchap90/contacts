@@ -1,9 +1,9 @@
 from contacts.forms import ContactForm
 from django.contrib import messages
-from django.http import HttpResponse, HttpResponseRedirect
-from django.shortcuts import get_object_or_404, redirect
+from django.http import HttpResponseRedirect
+from django.shortcuts import get_object_or_404
 from django.urls import reverse_lazy
-from django.views.generic import ListView, CreateView, DeleteView
+from django.views.generic import ListView, CreateView
 from django.views.generic.edit import FormView
 from loguru import logger
 
@@ -87,6 +87,9 @@ def delete_contact(request, pk):
     if request.method == "POST":
         contact = get_object_or_404(Contact, pk=pk)
         contact.delete()
-        messages.success(request, f"Contact {contact.first_name} has been successfully deleted.")
+        messages.success(
+            request,
+            f"Contact {contact.first_name} has been successfully deleted.",
+        )
 
     return HTTPResponseHXRedirect(redirect_to=reverse_lazy("contacts:list"))
